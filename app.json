@@ -1,0 +1,34 @@
+{
+  "name": "Service Management Application",
+  "description": "A comprehensive service management system for tracking customer requests and inventory",
+  "repository": "https://github.com/YOUR_USERNAME/YOUR_REPO_NAME",
+  "logo": "",
+  "keywords": ["node", "express", "react", "postgresql", "service-management"],
+  "image": "heroku/nodejs",
+  "addons": [
+    {
+      "plan": "heroku-postgresql:mini",
+      "as": "DATABASE"
+    }
+  ],
+  "env": {
+    "NODE_ENV": {
+      "description": "Environment mode",
+      "value": "production"
+    }
+  },
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "basic"
+    }
+  },
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    }
+  ],
+  "scripts": {
+    "postdeploy": "npm run db:push"
+  }
+}

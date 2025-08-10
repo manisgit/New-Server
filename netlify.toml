@@ -1,0 +1,26 @@
+[build]
+  publish = "dist/public"
+  command = "npm install && npm run build:client"
+
+[build.environment]
+  NODE_ENV = "production"
+  NPM_FLAGS = "--production=false"
+
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
+[[redirects]]
+  from = "/api/services*"
+  to = "/.netlify/functions/services"
+  status = 200
+
+[[redirects]]
+  from = "/api/inventory*"
+  to = "/.netlify/functions/inventory"
+  status = 200
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
